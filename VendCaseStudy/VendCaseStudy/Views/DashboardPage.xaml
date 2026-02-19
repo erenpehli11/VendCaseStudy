@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:VendCaseStudy.ViewModels"
+             x:Class="VendCaseStudy.Views.DashboardPage"
+             x:DataType="vm:DashboardViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="*, Auto">
+
+            <ScrollView Grid.Row="0">
+                <VerticalStackLayout Spacing="25" 
+                         Padding="25,40,25,20"
+                         MaximumWidthRequest="{OnIdiom Tablet=600}"
+                         HorizontalOptions="{OnIdiom Phone=Fill, Tablet=Center}">
+
+                    <Grid ColumnDefinitions="*, Auto">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Hoş Geldin," FontSize="14" TextColor="Gray" />
+                        <Label Text="VendCS Paneli" FontSize="22" FontAttributes="Bold" TextColor="#0078A7" />
+                    </VerticalStackLayout>
+
+                    <Button Grid.Column="1" 
+                            Text="Çıkış Yap" 
+                            Command="{Binding LogoutCommand}"
+                            FontSize="12"
+                            TextColor="#CC0000"
+                            BackgroundColor="Transparent"
+                            BorderColor="#CC0000"
+                            BorderWidth="1"
+                            CornerRadius="15"
+                            HeightRequest="35"
+                            Padding="15,0"
+                            VerticalOptions="Start"/>
+                </Grid>
+
+                <Frame Padding="20" CornerRadius="20" HasShadow="False" BackgroundColor="#F8FAFC" BorderColor="#E2E8F0">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Cihaz Token Bilgisi" FontSize="14" FontAttributes="Bold" TextColor="#64748B" />
+                        <Label Text="{Binding CurrentDeviceToken}" 
+                               FontSize="11" 
+                               TextColor="#94A3B8" 
+                               LineBreakMode="CharacterWrap" />
+                        <Button Text="Kopyala" 
+                                Command="{Binding CopyTokenCommand}"
+                                TextColor="#0078A7"
+                                BackgroundColor="Transparent"
+                                FontSize="12"
+                                HorizontalOptions="End"
+                                Margin="0,0,-10,0" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <VerticalStackLayout Spacing="5" Margin="5,0">
+                    <Label Text="Bildirim Yayınla" FontSize="18" FontAttributes="Bold" TextColor="#1E293B" />
+                    <Label Text="Hedef cihazlara anlık mesaj gönderin" FontSize="12" TextColor="Gray" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="15">
+                    <Border StrokeShape="RoundRectangle 15" StrokeThickness="1" Stroke="#E2E8F0" Padding="15,5" BackgroundColor="#FFFFFF">
+                        <Entry Text="{Binding NotifyTitle}" Placeholder="Mesaj Başlığı" PlaceholderColor="#CBD5E1" TextColor="#1E293B" />
+                    </Border>
+
+                    <Border StrokeShape="RoundRectangle 15" StrokeThickness="1" Stroke="#E2E8F0" Padding="15,5" BackgroundColor="#FFFFFF">
+                        <Editor Text="{Binding NotifyBody}" 
+                                Placeholder="Mesaj içeriğini buraya yazın..." 
+                                HeightRequest="120" 
+                                TextColor="#1E293B"
+                                AutoSize="Disabled" />
+                    </Border>
+
+                    <Grid ColumnDefinitions="Auto, *" ColumnSpacing="10" VerticalOptions="Center">
+                        <CheckBox Grid.Column="0" IsChecked="{Binding IsTopicSelected}" Color="#0078A7" Scale="0.8" />
+                        <Label Grid.Column="1" Text="Genel kanala (All Topics) duyur" VerticalOptions="Center" TextColor="#64748B" FontSize="13" />
+                    </Grid>
+
+                    <Border StrokeShape="RoundRectangle 15" 
+                            StrokeThickness="1" 
+                            Stroke="#0078A7" 
+                            Padding="15,5" 
+                            IsVisible="{Binding IsTopicSelected, Converter={StaticResource InvertedBoolConverter}}">
+                        <Entry Text="{Binding ManualToken}" Placeholder="Cihaz Tokenını buraya yapıştır" FontSize="12" />
+                    </Border>
+                </VerticalStackLayout>
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}" Color="#0078A7" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid Grid.Row="1" HeightRequest="100" Padding="20,10,20,20"
+      MaximumWidthRequest="{OnIdiom Tablet=600}"
+      HorizontalOptions="{OnIdiom Phone=Fill, Tablet=Center}">
+            <Frame BackgroundColor="#0078A7" 
+                   CornerRadius="25" 
+                   Padding="0" 
+                   HasShadow="False" 
+                   BorderColor="Transparent">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#0099CC" Offset="0.1" />
+                        <GradientStop Color="#0078A7" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Frame.Background>
+
+                <Button Text="BİLDİRİM GÖNDER" 
+                        Command="{Binding SendNotificationCommand}"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        BackgroundColor="Transparent"
+                        BorderColor="Transparent"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill" />
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>

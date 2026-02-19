@@ -1,0 +1,3 @@
+C:\Users\Chuwi H10\source\repos\VendCaseStudy\VendCaseStudy\VendCaseStudy\bin\Release\net9.0-android\publish\com.vend.vendcasestudy-Signed.apk
+C:\Users\Chuwi H10\source\repos\VendCaseStudy\VendCaseStudy\VendCaseStudy\bin\Release\net9.0-android\publish\com.vend.vendcasestudy.apk
+C:\Users\Chuwi H10\source\repos\VendCaseStudy\VendCaseStudy\VendCaseStudy\bin\Release\net9.0-android\publish\_Microsoft.Android.Resource.Designer.dll

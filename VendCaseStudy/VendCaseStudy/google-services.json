@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "850153562897",
+    "project_id": "vendcasestudy",
+    "storage_bucket": "vendcasestudy.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850153562897:android:635e17a7621313f59a62b0",
+        "android_client_info": {
+          "package_name": "com.vend.vendcasestudy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850153562897-ditpi8o1vi52l39m5sj47b67d1eusb8p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vend.vendcasestudy",
+            "certificate_hash": "5764bf9d74b2885a16ba9057b9d6f7dba510490c"
+          }
+        },
+        {
+          "client_id": "850153562897-04vq9096556m9hvel9t8imh5scashnqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrJ0BAPY3MF6QSs4SXWcMVlTOId96yHWM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850153562897-04vq9096556m9hvel9t8imh5scashnqk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

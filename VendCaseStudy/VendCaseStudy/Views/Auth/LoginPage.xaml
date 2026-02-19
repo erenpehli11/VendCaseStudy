@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:VendCaseStudy.ViewModels"
+             x:Class="VendCaseStudy.Views.Auth.LoginPage"
+             x:DataType="vm:LoginViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F5F7FA">
+
+    <ScrollView Orientation="Vertical">
+        <Grid RowDefinitions="Auto, *">
+
+            <Grid Grid.Row="0" HeightRequest="{OnIdiom Phone=200, Tablet=300}" BackgroundColor="#0078A7">
+                <VerticalStackLayout VerticalOptions="Center" Spacing="5">
+                    <Label Text="VEND" 
+                           FontSize="{OnIdiom Phone=42, Tablet=56}" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           HorizontalOptions="Center" 
+                           CharacterSpacing="5" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <Frame Grid.Row="1"
+                   Margin="20,-60,20,20" 
+                   Padding="25" 
+                   CornerRadius="30" 
+                   HasShadow="True" 
+                   BackgroundColor="White"
+                   BorderColor="Transparent"
+                   HorizontalOptions="Center"
+                   WidthRequest="{OnIdiom Tablet=500}"
+                   MinimumWidthRequest="{OnIdiom Phone=320}"
+                   VerticalOptions="Start">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Hoş Geldiniz" FontSize="22" FontAttributes="Bold" TextColor="#333" HorizontalOptions="Center" />
+
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="E-posta" FontSize="11" TextColor="#0078A7" Margin="5,0" FontAttributes="Bold" />
+                        <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#F0F4F8" Padding="10,0">
+                            <Entry Text="{Binding Email}" Placeholder="ornek@mail.com" Keyboard="Email" HeightRequest="45" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Şifre" FontSize="11" TextColor="#0078A7" Margin="5,0" FontAttributes="Bold" />
+                        <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#F0F4F8" Padding="10,0">
+                            <Entry Text="{Binding Password}" Placeholder="********" IsPassword="True" HeightRequest="45" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <Button Text="Giriş Yap" 
+                            Command="{Binding LoginCommand}"
+                            BackgroundColor="#0078A7" 
+                            TextColor="White" 
+                            CornerRadius="22" 
+                            HeightRequest="50" 
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Margin="0,5,0,0" />
+
+                    <Label Text="Veya şununla giriş yapın" HorizontalOptions="Center" TextColor="Gray" FontSize="12" />
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                        <ImageButton Source="google.png" Command="{Binding LoginWithGoogleCommand}" HeightRequest="40" WidthRequest="40" Aspect="AspectFit" />
+                    </HorizontalStackLayout>
+
+                    <Button Text="Hesap oluşturun" 
+                            Command="{Binding GoToRegisterCommand}"
+                            BackgroundColor="Transparent" 
+                            TextColor="#0078A7" 
+                            FontSize="13"
+                            FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+    </ScrollView>
+</ContentPage>

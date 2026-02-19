@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace VendCaseStudy.Services.Interfaces
+{
+    public interface ILogService
+    {
+        Task LogAsync(string message, string type = "INFO");
+        Task LogExceptionAsync(Exception ex);
+    }
+}

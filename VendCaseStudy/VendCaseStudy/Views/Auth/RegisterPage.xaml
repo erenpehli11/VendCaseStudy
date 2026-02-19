@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:VendCaseStudy.ViewModels"
+             x:Class="VendCaseStudy.Views.Auth.RegisterPage"
+             x:DataType="vm:RegisterViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F5F7FA">
+
+    <ScrollView Orientation="Vertical">
+        <VerticalStackLayout Spacing="-30">
+
+
+
+            <Grid HeightRequest="{OnIdiom Phone=220, Tablet=300}" BackgroundColor="#0078A7">
+                <HorizontalStackLayout VerticalOptions="Center" Spacing="40" Padding="25">
+                   
+                    <Button Text="←" 
+                            Command="{Binding GoBackCommand}" 
+                            FontSize="28"
+                            TextColor="White"
+                            HorizontalOptions="Start"
+                            BackgroundColor="Transparent"
+                            Margin="0,0,0,10"/>
+
+                    <Label Text="VEND" 
+                    FontSize="{OnIdiom Phone=40, Tablet=56}"
+                           FontAttributes="Bold" 
+                    TextColor="White" 
+                    HorizontalOptions="Center" 
+                    CharacterSpacing="6" />
+
+
+
+
+                </HorizontalStackLayout>
+            </Grid>
+
+            <Frame Margin="20,-50,20,30" 
+                   Padding="25" 
+                   CornerRadius="30" 
+                   HasShadow="True" 
+                   BackgroundColor="White" 
+                   BorderColor="Transparent"
+                   HorizontalOptions="Center"
+                   WidthRequest="{OnIdiom Tablet=550}"
+                   MinimumWidthRequest="{OnIdiom Phone=340, Tablet=550}">
+
+                <VerticalStackLayout Spacing="18">
+                    <Label Text="Hesap Oluştur" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           TextColor="#333" 
+                           HorizontalOptions="Center" />
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="E-posta" FontSize="11" TextColor="#0078A7" FontAttributes="Bold" Margin="5,0" />
+                        <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#F0F4F8" Padding="12,0">
+                            <Entry Text="{Binding Email}" Placeholder="ornek@mail.com" Keyboard="Email" HeightRequest="45" />
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Şifre" FontSize="11" TextColor="#0078A7" FontAttributes="Bold" Margin="5,0" />
+                        <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#F0F4F8" Padding="10,0">
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Entry Grid.Column="0" 
+                                       Text="{Binding Password}" 
+                                       IsPassword="{Binding IsPasswordHidden}" 
+                                       Placeholder="********" 
+                                       HeightRequest="45" />
+                                <Button Grid.Column="1" 
+                                        Text="{Binding PasswordToggleText}" 
+                                        Command="{Binding TogglePasswordCommand}" 
+                                        FontSize="18"
+                                        TextColor="#0078A7"
+                                        BackgroundColor="Transparent" />
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Şifreyi Onayla" FontSize="11" TextColor="#0078A7" FontAttributes="Bold" Margin="5,0" />
+                        <Border StrokeShape="RoundRectangle 12" StrokeThickness="0" BackgroundColor="#F0F4F8" Padding="10,0">
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Entry Grid.Column="0" 
+                                       Text="{Binding ConfirmPassword}" 
+                                       IsPassword="{Binding IsPasswordHidden}" 
+                                       Placeholder="********" 
+                                       HeightRequest="45" />
+                                <Label Grid.Column="1" 
+                                       Text="{Binding ValidationStatusText}" 
+                                       TextColor="{Binding ValidationColor}"
+                                       VerticalOptions="Center"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       Margin="0,0,10,0" />
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <Button Text="Kayıt Ol" 
+                            Command="{Binding RegisterCommand}" 
+                            BackgroundColor="#0078A7" 
+                            TextColor="White" 
+                            CornerRadius="25" 
+                            HeightRequest="55" 
+                            FontAttributes="Bold" 
+                            Margin="0,15,0,0" />
+
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="#0078A7" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
